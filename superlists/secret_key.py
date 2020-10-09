@@ -1,1 +1,1 @@
-secret_key = '=#&^0*5u-m4$qt4@@lp0l6icj70=l2=wbpgsalc9%(92($v+++'
+secret_key = ''

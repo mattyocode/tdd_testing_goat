@@ -1,0 +1,8 @@
+db.sqlite3
+geckodriver.log
+env
+secret_key
+__pycache__
+*.pyc
+superlists/secret_key
+.vscode/settings.json

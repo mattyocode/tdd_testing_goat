@@ -62,8 +62,49 @@ class NewVisitorTest(LiveServerTestCase):
         self.wait_for_row_in_list_table('2: Re-string guitar')
 
         # Site has generated unique URL for user -- there is text explaining this
-        self.fail('Finish the test!')
+        # self.fail('Finish the test!')
 
         # User visits that URL - their to-do list is still there
 
         # Satisfied, they go on about their day
+
+    def test_multiple_users_can_start_lists_at_different_urls(self):
+        # Edith starts a new to-do list
+        self.browser.get(self.live_server_url)
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Buy guitar strings')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1: Buy guitar strings')
+
+        # Edith noticed that their list has a unique URL
+        edith_list_url = self.browser.current_url
+        self.assertRegex(edith_list_url, '/lists/.+')
+
+        ## We use a new browser session to make sure that no info
+        ## of Edith's is coming through from cookies, etc.
+        self.browser.quit()
+        self.browser = webdriver.Firefox()
+
+        # Francis visits the home page. Cannot see Edith's list
+        self.browser.get(self.live_server_url)
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('Buy guitar strings', page_text)
+        self.assertNotIn('Re-string guitar', page_text)
+
+        # Francis starts a new list by entering a new item.
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Buy milk')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1: Buy milk')
+
+        # Francis gets own unique URL
+        francis_list_url = self.browser.current_url
+        self.assertRegex(francis_list_url, '/lists/.+')
+        self.assertNotEqual(francis_list_url, edith_list_url)
+
+        # Again, no sign of Edith's list
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('Buy guitar strings', page_text)
+        self.assertIn('Buy milk', page_text)
+
+        # Both satisfied - days carry on.

@@ -5,5 +5,6 @@ secret_key
 __pycache__
 *.pyc
 superlists/secret_key.py
+superlists/secret_key.txt
 .vscode/settings.json
 /static

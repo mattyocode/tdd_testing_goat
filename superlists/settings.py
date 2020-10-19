@@ -26,7 +26,7 @@ with open('superlists/secret_key.txt') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.134.149.40']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

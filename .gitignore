@@ -9,3 +9,4 @@ superlists/secret_key.txt
 .vscode/settings.json
 /static
 tdd-book-key.pem
+.env

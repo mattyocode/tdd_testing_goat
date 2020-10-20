@@ -3,8 +3,9 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/mattyocode/tdd_testing_goat.git'
-# env.user = 'ubuntu'
-# env.host = 'staging.mattyocode.com'
+env.user = 'ubuntu'
+env.host = 'staging.mattyocode.com'
+env.key_filename = ['/Users/m.oliver/Desktop/Python/python-tdd-book/tdd-book-key.pem']
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'

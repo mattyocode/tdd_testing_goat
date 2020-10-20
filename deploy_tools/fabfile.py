@@ -29,7 +29,7 @@ def waitforssh():
         try:
             s.connect((address,port))
             return
-        except Exception,e:
+        except Exception as e:
             print "failed to connec to %s:%s %(address,port)
             pass
 

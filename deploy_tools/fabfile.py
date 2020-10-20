@@ -6,13 +6,12 @@ from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/mattyocode/tdd_testing_goat.git'
 env.user = 'ubuntu'
-env.host = 'staging.mattyocode.com'
+env.host = ['staging.mattyocode.com']
 env.key_filename = ['/Users/m.oliver/Desktop/Python/python-tdd-book/tdd-book-key.pem']
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
     run(f'mkdir -p {site_folder}')
-    waitforssh()
     with cd(site_folder):
         _get_latest_source()
         _update_virtualenv()
@@ -20,18 +19,18 @@ def deploy():
         _update_static_files()
         _update_database()
 
-def waitforssh():
-    s=socket.socket()
-    address=env.host_string
-    port=22
-    while True:
-        time.sleep(5)
-        try:
-            s.connect((address,port))
-            return
-        except Exception as e:
-            print "failed to connec to %s:%s %(address,port)
-            pass
+# def waitforssh():
+#     s=socket.socket()
+#     address=env.host_string
+#     port=22
+#     while True:
+#         time.sleep(5)
+#         try:
+#             s.connect((address,port))
+#             return
+#         except Exception as e:
+#             print "failed to connec to %s:%s %(address,port)
+#             pass
 
 def _get_latest_source():
     if exists('.git'):

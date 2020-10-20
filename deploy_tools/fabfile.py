@@ -1,13 +1,13 @@
 import random
-import socket
-import time
+# import socket
+# import time
 from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/mattyocode/tdd_testing_goat.git'
 env.user = 'ubuntu'
-env.host = ['18.134.149.40']
-env.port = 22
+env.host = ['staging.mattyocode.com']
+# env.port = 22
 env.key_filename = ['/Users/m.oliver/Desktop/Python/python-tdd-book/tdd-book-key.pem']
 
 def deploy():

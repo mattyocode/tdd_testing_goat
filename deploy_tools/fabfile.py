@@ -6,7 +6,8 @@ from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/mattyocode/tdd_testing_goat.git'
 env.user = 'ubuntu'
-env.host = ['staging.mattyocode.com']
+env.host = ['ec2-18-134-149-40.eu-west-2.compute.amazonaws.com']
+env.port
 env.key_filename = ['/Users/m.oliver/Desktop/Python/python-tdd-book/tdd-book-key.pem']
 
 def deploy():

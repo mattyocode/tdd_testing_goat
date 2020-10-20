@@ -1,13 +1,10 @@
 import random
-# import socket
-# import time
 from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/mattyocode/tdd_testing_goat.git'
 env.user = 'ubuntu'
 env.host = ['staging.mattyocode.com']
-# env.port = 22
 env.key_filename = ['/Users/m.oliver/Desktop/Python/python-tdd-book/tdd-book-key.pem']
 
 def deploy():
@@ -19,19 +16,6 @@ def deploy():
         _create_or_update_dotenv()
         _update_static_files()
         _update_database()
-
-# def waitforssh():
-#     s=socket.socket()
-#     address=env.host_string
-#     port=22
-#     while True:
-#         time.sleep(5)
-#         try:
-#             s.connect((address,port))
-#             return
-#         except Exception as e:
-#             print "failed to connec to %s:%s %(address,port)
-#             pass
 
 def _get_latest_source():
     if exists('.git'):

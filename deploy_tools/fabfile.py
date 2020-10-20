@@ -8,7 +8,7 @@ env.host = 'staging.mattyocode.com'
 env.key_filename = ['/Users/m.oliver/Desktop/Python/python-tdd-book/tdd-book-key.pem']
 
 def deploy():
-    site_folder = f'/home/{env.user}/sites/{env.host}'
+    site_folder = f'/home/{env.user}/sites/{env.host}/'
     run(f'mkdir -p {site_folder}')
     with cd(site_folder):
         _get_latest_source()

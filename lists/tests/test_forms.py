@@ -33,13 +33,13 @@ class ExistingListItemFormTest(TestCase):
         form = ExistingListItemForm(for_list=list_)
         self.assertIn('placeholder="Enter a to-do item"', form.as_p())
 
-    def test_from_validation_for_blank_items(self):
+    def test_form_validation_for_blank_items(self):
         list_ = List.objects.create()
         form = ExistingListItemForm(for_list=list_, data={'text': ''})
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors['text'], [EMPTY_ITEM_ERROR])
 
-    def test_from_validation_for_duplicate_items(self):
+    def test_form_validation_for_duplicate_items(self):
         list_ = List.objects.create()
         Item.objects.create(list=list_, text='No twins!')
         form = ExistingListItemForm(for_list=list_, data={'text': 'No twins!'})

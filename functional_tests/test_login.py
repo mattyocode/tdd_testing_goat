@@ -1,10 +1,10 @@
 from django.core import mail
-from selenium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import Keys
 import re
 
 from .base import FunctionalTest
 
-TEST_EMAIL = mattofcourse@gmail.com
+TEST_EMAIL = 'mattofcourse@gmail.com'
 SUBJECT = 'Your login link for Superlists'
 
 class LoginTest(FunctionalTest):

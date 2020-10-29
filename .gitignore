@@ -10,3 +10,4 @@ superlists/secret_key.txt
 /static
 tdd-book-key.pem
 .env
+aws/credentials

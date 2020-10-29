@@ -133,8 +133,37 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mattofcourse@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-EMAIL_PORT = 465
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+        },
+    },
+    'root': {'level': 'INFO'},
+}
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'mattyodev@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+# EMAIL_PORT = 587
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+
 EMAIL_USE_TLS = True
+EMAIL_HOST = 'email-smtp.eu-west-2.amazonaws.com'
+EMAIL_HOST_USER = 'mattyodev@gmail.com'
+AWS_ACCESS_KEY_ID = 'AKIA5V5W35S33C6GI4N4'
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+EMAIL_PORT = 465
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+print(AWS_SECRET_ACCESS_KEY)

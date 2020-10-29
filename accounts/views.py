@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.contrib import auth, messages
@@ -16,8 +17,9 @@ def send_login_email(request):
     send_mail(
         'Your login link for Superlists', 
         message_body, 
-        'noreply@superlists', 
-        [email]
+        settings.EMAIL_HOST_USER, 
+        [email],
+        fail_silently=False
     )
     messages.success(
         request,

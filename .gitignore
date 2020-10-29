@@ -11,3 +11,4 @@ superlists/secret_key.txt
 tdd-book-key.pem
 .env
 aws/credentials
+.aws/credentials

@@ -1,5 +1,7 @@
-from fabric.api import run
+from fabric.api import run, env
 from fabric.context_managers import settings, shell_env
+
+env.key_filename=['./tdd-book-key.pem']
 
 def _get_manage_dot_py(host):
     return f'~/sites/{host}/env/bin/python ~/sites/{host}/manage.py'

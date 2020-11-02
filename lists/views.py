@@ -29,4 +29,4 @@ def view_list(request, list_id):
     return render(request, 'lists/list.html', {'list': list_, 'form': form})
 
 def my_lists(request, email):
-    return render(request, 'my_lists.html')
+    return render(request, 'lists/my_lists.html')
